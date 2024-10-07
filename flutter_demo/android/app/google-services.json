@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:463185682464:android:31223f85ba343fe5151c45",
+        "android_client_info": {
+          "package_name": "com.example.flutter_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASabsNnaNIQSS35CJ_70Tzuw5R3pvDL-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:463185682464:android:bfa3bf03704643cf151c45",
         "android_client_info": {
           "package_name": "com.firebasedemothomas.a"
