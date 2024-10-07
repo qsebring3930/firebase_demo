@@ -59,7 +59,6 @@ class HomePage extends StatelessWidget {
             },
           if (appState.loggedIn) ...[
             YesNoSelection(
-            state: appState.attending,
             onSelection: (attending) => appState.attending = attending,
             ),
             const Header('Discussion'),

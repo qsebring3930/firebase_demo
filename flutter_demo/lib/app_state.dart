@@ -27,18 +27,11 @@ class ApplicationState extends ChangeNotifier {
   int _attendees = 0;
   int get attendees => _attendees;
 
-  Attending _attending = Attending.unknown;
-  StreamSubscription<DocumentSnapshot>? _attendingSubscription;
-  Attending get attending => _attending;
-  set attending(Attending attending) {
+  set attending(int attending) {
     final userDoc = FirebaseFirestore.instance
         .collection('attendees')
         .doc(FirebaseAuth.instance.currentUser!.uid);
-    if (attending == Attending.yes) {
-      userDoc.set(<String, dynamic>{'attending': true});
-    } else {
-      userDoc.set(<String, dynamic>{'attending': false});
-    }
+    userDoc.set(<String, dynamic>{'attending': attending});
   }
 
   Future<void> init() async {
@@ -51,10 +44,14 @@ class ApplicationState extends ChangeNotifier {
 
     FirebaseFirestore.instance
         .collection('attendees')
-        .where('attending', isEqualTo: true)
+        .where('attending')
         .snapshots()
         .listen((snapshot) {
-      _attendees = snapshot.docs.length;
+        int tempAttendees = 0;
+      for (var doc in snapshot.docs) {
+      tempAttendees += (doc.data()['attending'] as num?)?.toInt() ?? 0;
+      }
+      _attendees = tempAttendees;
       notifyListeners();
     });
     
@@ -74,22 +71,6 @@ class ApplicationState extends ChangeNotifier {
                 message: document.data()['text'] as String,
               ),
             );
-          }
-          notifyListeners();
-        });
-        _attendingSubscription = FirebaseFirestore.instance
-            .collection('attendees')
-            .doc(user.uid)
-            .snapshots()
-            .listen((snapshot) {
-          if (snapshot.data() != null) {
-            if (snapshot.data()!['attending'] as bool) {
-              _attending = Attending.yes;
-            } else {
-              _attending = Attending.no;
-            }
-          } else {
-            _attending = Attending.unknown;
           }
           notifyListeners();
         });
