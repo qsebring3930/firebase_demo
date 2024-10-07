@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "463185682464",
+    "project_id": "fir-demo-e121e",
+    "storage_bucket": "fir-demo-e121e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463185682464:android:bfa3bf03704643cf151c45",
+        "android_client_info": {
+          "package_name": "com.firebasedemothomas.a"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASabsNnaNIQSS35CJ_70Tzuw5R3pvDL-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
